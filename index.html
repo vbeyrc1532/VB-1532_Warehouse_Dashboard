@@ -145,39 +145,28 @@
 		popupAnchor: [1, -34],
 		shadowSize: [41, 41]
 		}); 
-		/*
+		
 		if (String(data.feed.entry[i].gsx$priority.$t) == "HP"){
-		        	var Icon = greenIcon;
+		        	var Icon_ = greenIcon;
 		}
 		if (String(data.feed.entry[i].gsx$priority.$t) == "MP"){
-		        	var Icon = redIcon;
+		        	var Icon_ = redIcon;
 		}
 		if (String(data.feed.entry[i].gsx$priority.$t) == "LP"){
-		        	var Icon = yellowIcon;
+		        	var Icon_ = yellowIcon;
 		}
-                */
+                
 		var json_data = {
 			"City": data.feed.entry[i].gsx$city.$t,
 			"OderID" : data.feed.entry[i].gsx$orderid.$t,
 			"Item" : data.feed.entry[i].gsx$item.$t,
-			"Priority" : data.feed.entry[i].gsx$priority.$t,
 			"Latitude": parseFloat(data.feed.entry[i].gsx$latitude.$t),
 			"Longitude": parseFloat(data.feed.entry[i].gsx$longitude.$t)
 		};
 		jsonDataObject.push(json_data);
 
 		for (var j = 0; j < jsonDataObject.length; j++) {
-		if (String(data.feed.entry[i].gsx$priority.$t) == "LP"){
-			var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: yellowIcon});	
-		}
-		if (String(data.feed.entry[i].gsx$priority.$t) == "HP"){
-			var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: greenIcon});	
-		}
-		if (String(data.feed.entry[i].gsx$priority.$t) == "MP"){
-			var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: redIcon});	
-		}
-
-		//var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon});		
+		var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
 		marker.bindPopup(jsonDataObject[j].City, {
 			autoClose: false
 			});
