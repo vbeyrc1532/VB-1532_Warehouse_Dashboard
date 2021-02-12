@@ -145,7 +145,7 @@
 		popupAnchor: [1, -34],
 		shadowSize: [41, 41]
 		}); 
-		
+		/*
 		if (String(data.feed.entry[i].gsx$priority.$t) == "HP"){
 		        	var Icon_ = greenIcon;
 		}
@@ -155,7 +155,7 @@
 		else if (String(data.feed.entry[i].gsx$priority.$t) == "LP"){
 		        	var Icon_ = yellowIcon;
 		}
-                
+                */
 		var json_data = {
 			"City": data.feed.entry[i].gsx$city.$t,
 			"OderID" : data.feed.entry[i].gsx$orderid.$t,
@@ -166,6 +166,15 @@
 		jsonDataObject.push(json_data);
 
 		for (var j = 0; j < jsonDataObject.length; j++) {
+		if(jsonDataObject[j].Priority == 'HP'){
+		  var Icon_ =  greenIcon;
+		  }
+		else if(jsonDataObject[j].Priority == 'MP'){
+		  var Icon_ = redIcon;
+		  }
+		else if(jsonDataObject[j].Priority == 'LP'){
+		  var Icon_ =  yellowIcon;
+		}
 		var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
 		marker.bindPopup(jsonDataObject[j].City, {
 			autoClose: false
