@@ -83,7 +83,7 @@
         
         // var trHTML = '';	    
         
-        $.getJSON('https://spreadsheets.google.com/feeds/list/1oOw8__BGFufe4LsNXc-K1Cz64fYdiFg0QlQqGUkpcQ4/5/public/full?alt=json', function(data) {
+        $.getJSON('https://spreadsheets.google.com/feeds/list/18ElofyCyVRwX9F25ebVpSEA--qJPNNbQR7OjkRCDiio/1/public/full?alt=json', function(data) {
         //https://spreadsheets.google.com/feeds/list/18ElofyCyVRwX9F25ebVpSEA--qJPNNbQR7OjkRCDiio/1/public/full?alt=json	
             	var trHTML = '';
 
@@ -116,7 +116,7 @@
         var map = L.map('map').setView([20.5937, 78.9629], 4);
         var jsonDataObject =[];
 
-        $.getJSON('https://spreadsheets.google.com/feeds/list/1oOw8__BGFufe4LsNXc-K1Cz64fYdiFg0QlQqGUkpcQ4/5/public/full?alt=json', function(data) {
+        $.getJSON('https://spreadsheets.google.com/feeds/list/18ElofyCyVRwX9F25ebVpSEA--qJPNNbQR7OjkRCDiio/1/public/full?alt=json', function(data) {
         for (var i = 0; i < data.feed.entry.length; ++i) {
 
            	var greenIcon = new L.Icon({
@@ -209,7 +209,7 @@
 		var jsonDataObject =[];
 		var graph_arr = [['Order ID', 'Time Taken', { role: 'style' }]];
 		var bar_color = [];
-		$.getJSON('https://spreadsheets.google.com/feeds/list/1oOw8__BGFufe4LsNXc-K1Cz64fYdiFg0QlQqGUkpcQ4/5/public/full?alt=json', function(data) {
+		$.getJSON('https://spreadsheets.google.com/feeds/list/18ElofyCyVRwX9F25ebVpSEA--qJPNNbQR7OjkRCDiio/1/public/full?alt=json', function(data) {
 			for (var i = 0; i < data.feed.entry.length; ++i) {
 			var json_data = {
 			  "OrderID" : data.feed.entry[i].gsx$orderid.$t,
