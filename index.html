@@ -179,24 +179,31 @@
 		jsonDataObject.push(json_data);
 
 		for (var j = 0; j < jsonDataObject.length; j++) {
-		if(jsonDataObject[j].Dispatched == '' && jsonDataObject[j].Shipped == ''){
+		if(jsonDataObject[j].Dispatched == Null && jsonDataObject[j].Shipped == Null && jsonDataObject[j].OrderID == Null){
 		  var Icon_ =  redIcon;
+		  var j = True;			
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == ''){
+		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == Null && jsonDataObject[j].OrderID != Null){
 		  var Icon_ = greenIcon;
+		  var j = True;			
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'YES'){
+		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'YES' && jsonDataObject[j].OrderID != Null){
 		  var Icon_ =  greenIcon;
+		  var j = True;
 		}
-		var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
-		marker.bindPopup(jsonDataObject[j].City, {
-			autoClose: false
-			});
-		map.addLayer(marker);
-		marker.on('click', onClick_Marker)
-		// Attach the corresponding JSON data to your marker:
-		marker.myJsonData =jsonDataObject[j];
-
+		else{
+		  var j = False;	
+		}
+		if j == True{
+			var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
+			marker.bindPopup(jsonDataObject[j].City, {
+				autoClose: false
+				});
+			map.addLayer(marker);
+			marker.on('click', onClick_Marker)
+			// Attach the corresponding JSON data to your marker:
+			marker.myJsonData =jsonDataObject[j];
+		}
 		function onClick_Marker(e) {
 		var marker = e.target;
 		popup = L.popup()
