@@ -179,13 +179,13 @@
 		jsonDataObject.push(json_data);
 
 		for (var j = 0; j < jsonDataObject.length; j++) {
-		if(jsonDataObject[j].Dispatched == 'NO' & jsonDataObject[j].Shipped == 'NO'){
+		if(jsonDataObject[j].Dispatched == 'NO' && jsonDataObject[j].Shipped == 'NO'){
 		  var Icon_ =  redIcon;
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' & jsonDataObject[j].Shipped == 'NO'){
+		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'NO'){
 		  var Icon_ = greenIcon;
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' & jsonDataObject[j].Shipped == 'YES'){
+		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'YES'){
 		  var Icon_ =  greenIcon;
 		}
 		var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
