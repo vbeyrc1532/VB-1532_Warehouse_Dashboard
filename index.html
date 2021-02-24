@@ -171,8 +171,8 @@
 			"OderID" : data.feed.entry[i].gsx$orderid.$t,
 			"Item" : data.feed.entry[i].gsx$item.$t,
 			"Priority" : data.feed.entry[i].gsx$priority.$t,
-			"Dispatched" : data.feed.entry[i].gsx$priority.$t,
-			"Shipped" : data.feed.entry[i].gsx$priority.$t,
+			"Dispatched" : data.feed.entry[i].gsx$dispatchstatus.$t,
+			"Shipped" : data.feed.entry[i].gsx$shippedstatus.$t,
 			"Latitude": parseFloat(data.feed.entry[i].gsx$latitude.$t),
 			"Longitude": parseFloat(data.feed.entry[i].gsx$longitude.$t)
 		};
