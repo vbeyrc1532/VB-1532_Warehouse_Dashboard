@@ -48,11 +48,11 @@
                 <th>Item</th>
                 <th>Priority</th>
                 <th>City</th>
-                <th>Dispatched</th>
-                <th>Shipped</th>
+                <th>Dispatch Status</th>
+                <th>Shipped Status</th>
                 <th>Order Date and Time</th>
-		<th>Dispatch Date and Time</th>
-                <th>Shipped Date and Time</th>
+		<th>Dispatch Time</th>
+                <th>Shipped Time</th>
                 <th>Time Taken</th>		    
             </tr>
             <tbody id="tableContent">
@@ -99,11 +99,11 @@
                         	  '</td><td>' + data.feed.entry[i].gsx$item.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$priority.$t + 
                         	  '</td><td>'  + data.feed.entry[i].gsx$city.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$dispatched.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$shipped.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$dispatchstatus.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$shippedstatus.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$orderdateandtime.$t + 
-                        	  '</td><td>'  + data.feed.entry[i].gsx$dispatchdateandtime.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$shippeddateandtime.$t + 
+                        	  '</td><td>'  + data.feed.entry[i].gsx$dispatchtime.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$shippedtime.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$timetaken.$t +  
                         	  '</td></tr>';
 
@@ -171,8 +171,8 @@
 			"OderID" : data.feed.entry[i].gsx$orderid.$t,
 			"Item" : data.feed.entry[i].gsx$item.$t,
 			"Priority" : data.feed.entry[i].gsx$priority.$t,
-			"Dispatched" : data.feed.entry[i].gsx$dispatched.$t,
-			"Shipped" : data.feed.entry[i].gsx$shipped.$t,
+			"Dispatched" : data.feed.entry[i].gsx$dispatchstatus.$t,
+			"Shipped" : data.feed.entry[i].gsx$shippedstatus.$t,
 			"Latitude": parseFloat(data.feed.entry[i].gsx$latitude.$t),
 			"Longitude": parseFloat(data.feed.entry[i].gsx$longitude.$t)
 		};
