@@ -104,7 +104,7 @@
                         	  '</td><td>' + data.feed.entry[i].gsx$orderdateandtime.$t + 
                         	  '</td><td>'  + data.feed.entry[i].gsx$dispatchtime.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$shippingtime.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$timetaken.$t +  
+                        	  '</td><td>' + data.feed.entry[i].gsx$timetaken.$t + 
                         	  '</td></tr>';
 
                 }
@@ -183,7 +183,7 @@
 		  var Icon_ =  redIcon;
 		  }
 		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'NO'){
-		  var Icon_ = greenIcon;
+		  var Icon_ = yellowIcon;
 		  }
 		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'YES'){
 		  var Icon_ =  greenIcon;
