@@ -48,11 +48,11 @@
                 <th>Item</th>
                 <th>Priority</th>
                 <th>City</th>
-                <th>Dispatched</th>
-                <th>Shipped</th>
+                <th>Dispatch Status</th>
+                <th>Shipped Status</th>
                 <th>Order Date and Time</th>
-		<th>Dispatch Date and Time</th>
-                <th>Shipped Date and Time</th>
+		<th>Dispatch Time</th>
+                <th>Shipping Time</th>
                 <th>Time Taken</th>		    
             </tr>
             <tbody id="tableContent">
@@ -99,11 +99,11 @@
                         	  '</td><td>' + data.feed.entry[i].gsx$item.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$priority.$t + 
                         	  '</td><td>'  + data.feed.entry[i].gsx$city.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$dispatched.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$shipped.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$dispatchstatus.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$shippedstatus.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$orderdateandtime.$t + 
-                        	  '</td><td>'  + data.feed.entry[i].gsx$dispatchdateandtime.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$shippeddateandtime.$t + 
+                        	  '</td><td>'  + data.feed.entry[i].gsx$dispatchtime.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$shippingtime.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$timetaken.$t +  
                         	  '</td></tr>';
 
@@ -171,19 +171,21 @@
 			"OderID" : data.feed.entry[i].gsx$orderid.$t,
 			"Item" : data.feed.entry[i].gsx$item.$t,
 			"Priority" : data.feed.entry[i].gsx$priority.$t,
+			"Dispatched" : data.feed.entry[i].gsx$priority.$t,
+			"Shipped" : data.feed.entry[i].gsx$priority.$t,
 			"Latitude": parseFloat(data.feed.entry[i].gsx$latitude.$t),
 			"Longitude": parseFloat(data.feed.entry[i].gsx$longitude.$t)
 		};
 		jsonDataObject.push(json_data);
 
 		for (var j = 0; j < jsonDataObject.length; j++) {
-		if(jsonDataObject[j].Dispatched == 'NO' & jsonDataObject[j].Shipped == 'NO'){
+		if(jsonDataObject[j].Dispatched == 'NO' && jsonDataObject[j].Shipped == 'NO'){
 		  var Icon_ =  redIcon;
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' & jsonDataObject[j].Shipped == 'NO'){
+		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'NO'){
 		  var Icon_ = greenIcon;
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' & jsonDataObject[j].Shipped == 'YES'){
+		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'YES'){
 		  var Icon_ =  greenIcon;
 		}
 		var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
