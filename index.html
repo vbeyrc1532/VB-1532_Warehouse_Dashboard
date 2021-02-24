@@ -48,11 +48,11 @@
                 <th>Item</th>
                 <th>Priority</th>
                 <th>City</th>
-                <th>Dispatch Status</th>
-                <th>Shipped Status</th>
+                <th>Dispatched</th>
+                <th>Shipped</th>
                 <th>Order Date and Time</th>
-		<th>Dispatch Time</th>
-                <th>Shipping Time</th>
+		<th>Dispatch Date and Time</th>
+                <th>Shipped Date and Time</th>
                 <th>Time Taken</th>		    
             </tr>
             <tbody id="tableContent">
@@ -99,11 +99,11 @@
                         	  '</td><td>' + data.feed.entry[i].gsx$item.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$priority.$t + 
                         	  '</td><td>'  + data.feed.entry[i].gsx$city.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$dispatchstatus.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$shippedstatus.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$dispatched.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$shipped.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$orderdateandtime.$t + 
-                        	  '</td><td>'  + data.feed.entry[i].gsx$dispatchtime.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$shippingtime.$t + 
+                        	  '</td><td>'  + data.feed.entry[i].gsx$dispatchdateandtime.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$shippeddateandtime.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$timetaken.$t +  
                         	  '</td></tr>';
 
@@ -168,42 +168,33 @@
                 */
 		var json_data = {
 			"City": data.feed.entry[i].gsx$city.$t,
-			"OrderID" : data.feed.entry[i].gsx$orderid.$t,
+			"OderID" : data.feed.entry[i].gsx$orderid.$t,
 			"Item" : data.feed.entry[i].gsx$item.$t,
 			"Priority" : data.feed.entry[i].gsx$priority.$t,
-			"Dispatched" : data.feed.entry[i].gsx$dispatchstatus.$t,
-			"Shipped" : data.feed.entry[i].gsx$shippedstatus.$t,
 			"Latitude": parseFloat(data.feed.entry[i].gsx$latitude.$t),
 			"Longitude": parseFloat(data.feed.entry[i].gsx$longitude.$t)
 		};
 		jsonDataObject.push(json_data);
 
 		for (var j = 0; j < jsonDataObject.length; j++) {
-		if(jsonDataObject[j].Dispatched != 'YES' && jsonDataObject[j].Shipped != 'YES' && jsonDataObject[j].OrderID == ""){
+		if(jsonDataObject[j].Dispatched == 'NO' & jsonDataObject[j].Shipped == 'NO'){
 		  var Icon_ =  redIcon;
-		  var j = True;			
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped != 'YES' && jsonDataObject[j].OrderID != ""){
+		else if(jsonDataObject[j].Dispatched == 'YES' & jsonDataObject[j].Shipped == 'NO'){
 		  var Icon_ = greenIcon;
-		  var j = True;			
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'YES' && jsonDataObject[j].OrderID != ""){
+		else if(jsonDataObject[j].Dispatched == 'YES' & jsonDataObject[j].Shipped == 'YES'){
 		  var Icon_ =  greenIcon;
-		  var j = True;
 		}
-		else{
-		  var j = False;	
-		}
-		if j == True{
-			var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
-			marker.bindPopup(jsonDataObject[j].City, {
-				autoClose: false
-				});
-			map.addLayer(marker);
-			marker.on('click', onClick_Marker)
-			// Attach the corresponding JSON data to your marker:
-			marker.myJsonData =jsonDataObject[j];
-		}
+		var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
+		marker.bindPopup(jsonDataObject[j].City, {
+			autoClose: false
+			});
+		map.addLayer(marker);
+		marker.on('click', onClick_Marker)
+		// Attach the corresponding JSON data to your marker:
+		marker.myJsonData =jsonDataObject[j];
+
 		function onClick_Marker(e) {
 		var marker = e.target;
 		popup = L.popup()
@@ -268,6 +259,6 @@
 		var chart = new google.visualization.ColumnChart(document.getElementById('column_chart'));
 		chart.draw(data, options);
 		});	
-	}     
+	}    
 </script>
 </html>
