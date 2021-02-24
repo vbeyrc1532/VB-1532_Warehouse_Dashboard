@@ -47,8 +47,13 @@
                 <th>Order ID</th>
                 <th>Item</th>
                 <th>Priority</th>
-                <th>Quantity</th>
                 <th>City</th>
+                <th>Dispatched</th>
+                <th>Shipped</th>
+                <th>Order Date and Time</th>
+		<th>Dispatch Date and Time</th>
+                <th>Shipped Date and Time</th>
+                <th>Time Taken</th>		    
             </tr>
             <tbody id="tableContent">
             </tbody>
@@ -93,8 +98,13 @@
                     trHTML += '<tr><td>' + data.feed.entry[i].gsx$orderid.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$item.$t + 
                         	  '</td><td>' + data.feed.entry[i].gsx$priority.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$quantity.$t + 
                         	  '</td><td>'  + data.feed.entry[i].gsx$city.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$dispatched.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$shipped.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$orderdateandtime.$t + 
+                        	  '</td><td>'  + data.feed.entry[i].gsx$dispatchdateandtime.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$shippeddateandtime.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$timetaken.$t +  
                         	  '</td></tr>';
 
                 }
@@ -146,13 +156,13 @@
 		shadowSize: [41, 41]
 		}); 
 		/*
-		if (String(data.feed.entry[i].gsx$priority.$t) == "HP"){
+		if (String(data.feed.entry[i].gsx$dispatched.$t) == "NO" & String(data.feed.entry[i].gsx$shipped.$t) == "NO"){
 		        	var Icon_ = greenIcon;
 		}
-		else if (String(data.feed.entry[i].gsx$priority.$t) == "MP"){
+		else if (String(data.feed.entry[i].gsx$dispatched.$t) == "YES" & String(data.feed.entry[i].gsx$shipped.$t) == "NO"){
 		        	var Icon_ = redIcon;
 		}
-		else if (String(data.feed.entry[i].gsx$priority.$t) == "LP"){
+		else if (String(data.feed.entry[i].gsx$dispatched.$t) == "YES" & String(data.feed.entry[i].gsx$shipped.$t) == "YES"){
 		        	var Icon_ = yellowIcon;
 		}
                 */
@@ -167,14 +177,14 @@
 		jsonDataObject.push(json_data);
 
 		for (var j = 0; j < jsonDataObject.length; j++) {
-		if(jsonDataObject[j].Priority == 'HP'){
+		if(jsonDataObject[j].Dispatched == 'NO' & jsonDataObject[j].Shipped == 'NO'){
+		  var Icon_ =  redIcon;
+		  }
+		else if(jsonDataObject[j].Dispatched == 'YES' & jsonDataObject[j].Shipped == 'NO'){
+		  var Icon_ = greenIcon;
+		  }
+		else if(jsonDataObject[j].Dispatched == 'YES' & jsonDataObject[j].Shipped == 'YES'){
 		  var Icon_ =  greenIcon;
-		  }
-		else if(jsonDataObject[j].Priority == 'MP'){
-		  var Icon_ = redIcon;
-		  }
-		else if(jsonDataObject[j].Priority == 'LP'){
-		  var Icon_ =  yellowIcon;
 		}
 		var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
 		marker.bindPopup(jsonDataObject[j].City, {
