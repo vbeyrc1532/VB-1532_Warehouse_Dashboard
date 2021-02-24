@@ -179,15 +179,15 @@
 		jsonDataObject.push(json_data);
 
 		for (var j = 0; j < jsonDataObject.length; j++) {
-		if(jsonDataObject[j].Dispatched == Null && jsonDataObject[j].Shipped == Null && jsonDataObject[j].OrderID == Null){
+		if(jsonDataObject[j].Dispatched != 'YES' && jsonDataObject[j].Shipped != 'YES' && jsonDataObject[j].OrderID == ""){
 		  var Icon_ =  redIcon;
 		  var j = True;			
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == Null && jsonDataObject[j].OrderID != Null){
+		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped != 'YES' && jsonDataObject[j].OrderID != ""){
 		  var Icon_ = greenIcon;
 		  var j = True;			
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'YES' && jsonDataObject[j].OrderID != Null){
+		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'YES' && jsonDataObject[j].OrderID != ""){
 		  var Icon_ =  greenIcon;
 		  var j = True;
 		}
