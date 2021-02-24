@@ -168,7 +168,7 @@
                 */
 		var json_data = {
 			"City": data.feed.entry[i].gsx$city.$t,
-			"OderID" : data.feed.entry[i].gsx$orderid.$t,
+			"OrderID" : data.feed.entry[i].gsx$orderid.$t,
 			"Item" : data.feed.entry[i].gsx$item.$t,
 			"Priority" : data.feed.entry[i].gsx$priority.$t,
 			"Dispatched" : data.feed.entry[i].gsx$dispatchstatus.$t,
@@ -179,13 +179,13 @@
 		jsonDataObject.push(json_data);
 
 		for (var j = 0; j < jsonDataObject.length; j++) {
-		if(jsonDataObject[j].Dispatched == 'NO' && jsonDataObject[j].Shipped == 'NO'){
+		if(jsonDataObject[j].Dispatched == 'NO'){
 		  var Icon_ =  redIcon;
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'NO'){
+		else if(jsonDataObject[j].Dispatched == 'YES'){
 		  var Icon_ = yellowIcon;
 		  }
-		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'YES'){
+		else if(jsonDataObject[j].Dispatched == 'YES'){
 		  var Icon_ =  greenIcon;
 		}
 		var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
@@ -201,7 +201,7 @@
 		var marker = e.target;
 		popup = L.popup()
 		.setLatLng(marker.getLatLng())
-		.setContent("Order ID: " + marker.myJsonData.OderID + " || Item: " +   marker.myJsonData.Item)
+		.setContent("Order ID: " + marker.myJsonData.OrderID + " || Item: " +   marker.myJsonData.Item)
 		.openOn(map);
 		}
 
