@@ -168,14 +168,14 @@
 			"City": data.feed.entry[i].gsx$city.$t,
 			"OrderID" : data.feed.entry[i].gsx$orderid.$t,
 			"Item" : data.feed.entry[i].gsx$item.$t,
-			"Priority" : data.feed.entry[i].gsx$priority.$t,/*
+			"Priority" : data.feed.entry[i].gsx$priority.$t,
 			"Dispatched" : data.feed.entry[i].gsx$dispatchstatus.$t,
-			"Shipped" : data.feed.entry[i].gsx$shippedstatus.$t,*/
+			"Shipped" : data.feed.entry[i].gsx$shippedstatus.$t,
 			"Latitude": parseFloat(data.feed.entry[i].gsx$latitude.$t),
 			"Longitude": parseFloat(data.feed.entry[i].gsx$longitude.$t)
 		};
 		jsonDataObject.push(json_data);
-		/*
+		
 		for (var j = 0; j < jsonDataObject.length; j++) {
 		if(jsonDataObject[j].Dispatched == 'NO' && jsonDataObject[j].Dispatched == 'NO'){
 		  var Icon_ =  redIcon;
@@ -185,7 +185,11 @@
 		  }
 		else if(jsonDataObject[j].Dispatched == 'YES' && jsonDataObject[j].Shipped == 'YES'){
 		  var Icon_ =  greenIcon;
-		}*/
+		}
+		else{
+		  var Icon_ =  greenIcon;
+		}
+		/*
 		for (var j = 0; j < jsonDataObject.length; j++) {
 		if(jsonDataObject[j].Priority == 'HP'){
 		  var Icon_ =  redIcon;
@@ -195,7 +199,7 @@
 		  }
 		else if(jsonDataObject[j].Priority == 'LP'){
 		  var Icon_ =  greenIcon;
-		}
+		}*/
 		var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)), {icon: Icon_});		
 		marker.bindPopup(jsonDataObject[j].City, {
 			autoClose: false
@@ -225,6 +229,7 @@
     }	
 	google.charts.load("current", {packages:['corechart']});
 	google.charts.setOnLoadCallback(refreshChart); 
+	
 	function refreshChart(){
 		var jsonDataObject =[];
 		var graph_arr = [['Order ID', 'Time Taken', { role: 'style' }]];
