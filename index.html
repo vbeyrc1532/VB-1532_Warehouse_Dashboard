@@ -86,7 +86,7 @@
         
         // var trHTML = '';	    
         
-        $.getJSON('https://spreadsheets.google.com/feeds/list/1oOw8__BGFufe4LsNXc-K1Cz64fYdiFg0QlQqGUkpcQ4/5/public/full?alt=json', function(data) {
+        $.getJSON('https://spreadsheets.google.com/feeds/list/1pClg2oFn-X-xGSSrzfRIRMwnCzGKEeJ5Lvdp4YnouOk/5/public/full?alt=json', function(data) {
         	
             	var trHTML = '';
 
@@ -124,7 +124,7 @@
         var map = L.map('map').setView([20.5937, 78.9629], 4);
         var jsonDataObject =[];
 
-        $.getJSON('https://spreadsheets.google.com/feeds/list/1oOw8__BGFufe4LsNXc-K1Cz64fYdiFg0QlQqGUkpcQ4/5/public/full?alt=json', function(data) {
+        $.getJSON('https://spreadsheets.google.com/feeds/list/1pClg2oFn-X-xGSSrzfRIRMwnCzGKEeJ5Lvdp4YnouOk/5/public/full?alt=json', function(data) {
         for (var i = 0; i < data.feed.entry.length; ++i) {
             var greenIcon = new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
@@ -207,7 +207,7 @@
         var jsonDataObject =[];
         var graph_arr = [['Order ID', 'Time Taken', { role: 'style' }]];
         var bar_color = [];
-        $.getJSON('https://spreadsheets.google.com/feeds/list/1oOw8__BGFufe4LsNXc-K1Cz64fYdiFg0QlQqGUkpcQ4/5/public/full?alt=json', function(data) {
+        $.getJSON('https://spreadsheets.google.com/feeds/list/1pClg2oFn-X-xGSSrzfRIRMwnCzGKEeJ5Lvdp4YnouOk/5/public/full?alt=json', function(data) {
             for (var i = 0; i < data.feed.entry.length; ++i) {
             var json_data = {
               "OrderID" : data.feed.entry[i].gsx$orderid.$t,
